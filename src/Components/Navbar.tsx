@@ -1,6 +1,17 @@
-import React from 'react'
+import React ,{useState} from 'react'
 
 const Navbar = () => {
+
+    const [user,setUser] = useState<{name:string;
+        email:string;
+        image:string;
+    }|null>(null);
+
+    const [isLoggedin,setisLoggedin]=useState(false);
+    const [isSearchFocused, setIsSearchFocused] = useState(false);
+    const [isExploreMenuOpen, setIsExploreMenuOpen] = useState(false);
+    const [isDegreeMenuOpen, setIsDegreeMenuOpen] = useState(false);
+    const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 
     const topNav = ["For Individuals","For Businesses","For Universities","For Governments"];
 
@@ -58,7 +69,7 @@ const Navbar = () => {
 
 
   return (
-    <div>Navbar</div>
+    <div className="bg-[#1F2937] text-white">Navbar</div>
   )
 }
 
