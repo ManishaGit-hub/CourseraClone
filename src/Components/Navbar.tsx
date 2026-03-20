@@ -1,5 +1,5 @@
 import React ,{useState} from 'react'
-
+import { Globe } from 'lucide-react';
 const Navbar = () => {
 
     const [user,setUser] = useState<{name:string;
@@ -68,9 +68,23 @@ const Navbar = () => {
   ];
 
 
-  return (
-    <div className="bg-[#1F2937] text-white">Navbar</div>
-  )
+  return (<>
+    <div>
+      <div>
+        <div>
+          <div>
+            <Globe/>
+            <span>English</span>
+          </div>
+          <div>
+            {topNav.map((item,index)=>(
+              <a key={index} href="#">{item}</a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </>)
 }
 
 export default Navbar
