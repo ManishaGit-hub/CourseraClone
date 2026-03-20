@@ -69,16 +69,16 @@ const Navbar = () => {
 
 
   return (<>
-    <div>
-      <div>
-        <div>
-          <div>
-            <Globe/>
-            <span>English</span>
+    <div className="bg-[#1F2937] text-white">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="flex justify-between items-center py-2">
+          <div className="flex items-center space-x-4">
+            <Globe className="h-4 w-4 text-gray-400"/>
+            <span className="text-sm text-gray-300">English</span>
           </div>
-          <div>
+          <div className="flex space-x-6">
             {topNav.map((item,index)=>(
-              <a key={index} href="#">{item}</a>
+              <a key={index} href="#" className="text-sm hover:text-gray-300 transition-colors duration-200">{item}</a>
             ))}
           </div>
         </div>
