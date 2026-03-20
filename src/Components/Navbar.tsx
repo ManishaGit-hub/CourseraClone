@@ -1,5 +1,5 @@
 import React ,{useState} from 'react'
-import { Globe } from 'lucide-react';
+import { BookOpen, ChevronDown, Divide, Globe } from 'lucide-react';
 const Navbar = () => {
 
     const [user,setUser] = useState<{name:string;
@@ -80,6 +80,44 @@ const Navbar = () => {
             {topNav.map((item,index)=>(
               <a key={index} href="#" className="text-sm hover:text-gray-300 transition-colors duration-200">{item}</a>
             ))}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div>
+        <div>
+          <div>
+            <div>
+              <BookOpen/>
+              <span>Course</span>
+            </div>
+            <div>
+              <button onClick={()=>{setIsExploreMenuOpen(!isExploreMenuOpen);setIsDegreeMenuOpen(false);}} >Explore <ChevronDown/> </button>
+              {isExploreMenuOpen && (
+                <div>
+                  {exploreMenuItems.map((section,index)=>(
+                    <div key={index}>
+                      <h3>
+                          {section.category}
+                      </h3>
+                      <div>
+                        {section.items.map((item, itemIndex) => (
+                          <a key={itemIndex}>
+                              <div>
+                                {item.title}
+                              </div>
+                              <div>
+                                {item.description}
+                              </div>
+                            </a>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
