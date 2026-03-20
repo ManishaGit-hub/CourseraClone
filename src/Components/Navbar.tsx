@@ -1,5 +1,6 @@
 import React ,{useState} from 'react'
 import { BookOpen, ChevronDown, Divide, Globe, Search } from 'lucide-react';
+import Link from 'next/link';
 const Navbar = () => {
 
     const [user,setUser] = useState<{name:string;
@@ -128,6 +129,74 @@ const Navbar = () => {
                     isSearchFocused? "text-[#0056D2]" : "text-gray-400"}`}/>
               </div>
           </div>
+          
+          <div>
+            <div>
+              <button>Online Degree
+                <ChevronDown/>
+              </button>
+              {isDegreeMenuOpen && (
+                <div>
+                  {degreesMenuItems.map((item, index) => (
+                    <a key={index} href="">
+                      <span>{item.title}</span>
+                      <span>{item.count}</span>
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+            {isLoggedin ? (
+                <div>
+                  <button>
+                    <img src={user?.image}
+                      alt={user?.name} />
+                    <ChevronDown/>
+                  </button>
+                  {isUserMenuOpen && (
+                    <div>
+                      <Link href={`/profile`}>
+                        <div>
+                          <div>
+                            {user?.name}
+                          </div>
+                          <div>
+                            {user?.email}
+                          </div>
+                        </div>
+                      </Link>
+                      <a href="#">
+                        My Courses
+                      </a>
+                      <a href="/certificate">
+                        My Certificates
+                      </a>
+                      <a href="#">
+                        Settings
+                      </a>
+                      <button>Sign Out</button>
+                    </div>
+
+                  )}
+                </div>
+                ) : (
+                <>
+                  <button>
+                    <img
+                      src="https://www.google.com/favicon.ico"
+                      alt="google"/>
+                    <span>Sign in with Google</span>
+                  </button>
+                  <button>
+                    Join for Free
+                  </button>
+                </>
+              )}
+          </div>
+
+
+
+
         </div>
       </div>
     </div>
@@ -136,4 +205,122 @@ const Navbar = () => {
 
 export default Navbar
 /*
+<div className="flex items-center space-x-6">
+              <div className="relative">
+                <button
+                  className="text-[#0056D2] font-semibold hover:opacity-80 transition-opacity flex items-center"
+                  onClick={() => {
+                    setisdegreemenuopen(!isdegreemenuopen);
+                    setisexploremenuopen(false);
+                  }}
+                >
+                  Online Degree
+                  <ChevronDown
+                    className={`h-4 w-4 ml-1 transition-transform duration-200 ${
+                      isdegreemenuopen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {isdegreemenuopen && (
+                  <div className="absolute top-full right-0 w-[300px] bg-white shadow-lg rounded-md mt-2 p-4">
+                    {degreesMenuItems.map((item, index) => (
+                      <a
+                        key={index}
+                        href="#"
+                        className="flex justify-between items-center p-3 hover:bg-gray-50 rounded-md group"
+                      >
+                        <span className="text-gray-900 group-hover:text-[#0056D2]">
+                          {item.title}
+                        </span>
+                        <span className="text-sm text-gray-500">
+                          {item.count}
+                        </span>
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+              {isloggedin ? (
+                <div className="relative">
+                  <button
+                    className="flex items-center space-x-2"
+                    onClick={() => setisusermenuopen(!isusermenuopen)}
+                  >
+                    <img
+                      src={user?.image}
+                      alt={user?.name}
+                      className="w-8 h-8 rounded-full"
+                    />
+                    <ChevronDown
+                      className={`h-4 w-4 transition-transform duration-200 ${
+                        isusermenuopen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+                  
+                  {isusermenuopen && (
+                    <div className="absolute top-full right-0 w-[250px] bg-white shadow-lg rounded-md mt-2 py-2">
+                      <Link href={`/profile`} className="block">
+                        <div className="px-4 py-3 border-b cursor-pointer hover:bg-gray-100 transition">
+                          <div className="font-medium text-gray-900">
+                            {user?.name}
+                          </div>
+                          <div className="text-sm text-gray-500">
+                            {user?.email}
+                          </div>
+                        </div>
+                      </Link>
+                      <a
+                        href="#"
+                        className="block px-4 py-2 text-gray-700 hover:bg-gray-50"
+                      >
+                        My Courses
+                          </a>
+                      <a
+                        href="/certificate"
+                        className="block px-4 py-2 text-gray-700 hover:bg-gray-50"
+                      >
+                        My Certificates
+                      </a>
+                      <a
+                        href="#"
+                        className="block px-4 py-2 text-gray-700 hover:bg-gray-50"
+                      >
+                        Settings
+                      </a>
+                      <button
+                        className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-50"
+                        onClick={handlelogout}
+                      >
+                        Sign Out
+                      </button>
+                    </div>
+                  )}
+                </div>
+                 ) : (
+                <>
+                  <button
+                    onClick={handlegooglesignin}
+                    className="px-4 py-2 bg-white border border-gray-300 rounded-sm text-gray-700 font-semibold hover:bg-gray-50 transition-colors flex items-center space-x-2"
+                  >
+                    <img
+                      src="https://www.google.com/favicon.ico"
+                      alt="google"
+                      className="w-4 h-4"
+                    />
+                    <span>Sign in with Google</span>
+                  </button>
+                  <button className="px-4 py-2 bg-[#0056D2] text-white font-semibold rounded-sm hover:bg-blue-700 transition-colors">
+                    Join for Free
+                  </button>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+export default Navbar;
    */
