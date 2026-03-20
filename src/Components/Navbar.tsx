@@ -1,5 +1,5 @@
 import React ,{useState} from 'react'
-import { BookOpen, ChevronDown, Divide, Globe } from 'lucide-react';
+import { BookOpen, ChevronDown, Divide, Globe, Search } from 'lucide-react';
 const Navbar = () => {
 
     const [user,setUser] = useState<{name:string;
@@ -120,6 +120,13 @@ const Navbar = () => {
                   </div>
                 )}
               </div>
+
+              <div>
+                <input type="text" placeholder="What do you want to learn?" className={`w-[400px] pl-10 pr-4 py-2 border rounded-sm transition-all duration-200 ${isSearchFocused?"border-[#0056D2] shadow-sm"
+                      : "border-gray-300"}`} onFocus={() => setIsSearchFocused(true)} onBlur={() => setIsSearchFocused(false)} />
+                <Search className={`absolute left-3 top-2.5 h-5 w-5 transition-colors duration-200 ${
+                    isSearchFocused? "text-[#0056D2]" : "text-gray-400"}`}/>
+              </div>
           </div>
         </div>
       </div>
@@ -128,3 +135,5 @@ const Navbar = () => {
 }
 
 export default Navbar
+/*
+   */
