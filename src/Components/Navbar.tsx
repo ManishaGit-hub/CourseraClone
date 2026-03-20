@@ -84,40 +84,42 @@ const Navbar = () => {
         </div>
       </div>
     </div>
-    <div>
-      <div>
-        <div>
-          <div>
-            <div>
-              <BookOpen/>
-              <span>Course</span>
+    <div className="border-b sticky top-0 bg-white z-50">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="flex justify-between items-center h-16">
+          <div className="flex items-center space-x-6">
+            <div className="flex items-center text-[#0056D2] cursor-pointer">
+              <BookOpen className="h-8 w-8"/>
+              <span className="ml-2 font-bold text-xl tracking-tight">Course</span>
             </div>
-            <div>
-              <button onClick={()=>{setIsExploreMenuOpen(!isExploreMenuOpen);setIsDegreeMenuOpen(false);}} >Explore <ChevronDown/> </button>
-              {isExploreMenuOpen && (
-                <div>
-                  {exploreMenuItems.map((section,index)=>(
-                    <div key={index}>
-                      <h3>
+            <div className="relative">
+              <button onClick={()=>{setIsExploreMenuOpen(!isExploreMenuOpen);setIsDegreeMenuOpen(false);}} className="text-[#0056D2] font-semibold flex items-center hover:opacity-80 transition-opacity">Explore <ChevronDown className={`h-4 w-4 ml-1 transition-transform duration-200 ${
+                      isExploreMenuOpen ? "rotate-180" : ""
+                    }`}/> </button>
+                {isExploreMenuOpen && (
+                  <div className="absolute top-full left-0 w-[600px] bg-white shadow-lg rounded-md mt-2 p-6 grid grid-cols-2 gap-8">
+                    {exploreMenuItems.map((section, index) => (
+                      <div key={index}>
+                        <h3 className="font-semibold text-gray-900 mb-4">
                           {section.category}
-                      </h3>
-                      <div>
-                        {section.items.map((item, itemIndex) => (
-                          <a key={itemIndex}>
-                              <div>
+                        </h3>
+                        <div className="space-y-4">
+                          {section.items.map((item, itemIndex) => (
+                            <a key={itemIndex} href="#" className="block group">
+                              <div className="text-gray-900 font-medium group-hover:text-[#0056D2]">
                                 {item.title}
                               </div>
-                              <div>
+                              <div className="text-sm text-gray-500">
                                 {item.description}
                               </div>
                             </a>
-                        ))}
+                          ))}
+                          </div>
                       </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
+                    ))}
+                  </div>
+                )}
+              </div>
           </div>
         </div>
       </div>
