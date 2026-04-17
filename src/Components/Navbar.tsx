@@ -121,7 +121,7 @@ const handleGoogleSignIn = ()=>{
               <span className="ml-2 font-bold text-xl tracking-tight">Course</span>
             </div>
             <div className="relative">
-              <button onClick={()=>{setIsExploreMenuOpen(!isExploreMenuOpen);setIsDegreeMenuOpen(false);}} className="text-[#0056D2] font-semibold flex items-center hover:opacity-80 transition-opacity">Explore <ChevronDown className={`h-4 w-4 ml-1 transition-transform duration-200 ${
+              <button onClick={()=>{setIsExploreMenuOpen(!isExploreMenuOpen);setIsDegreeMenuOpen(false)}} className="text-[#0056D2] font-semibold flex items-center hover:opacity-80 transition-opacity">Explore <ChevronDown className={`h-4 w-4 ml-1 transition-transform duration-200 ${
                       isExploreMenuOpen ? "rotate-180" : ""
                     }`}/> </button>
                 {isExploreMenuOpen && (
@@ -149,8 +149,8 @@ const handleGoogleSignIn = ()=>{
                 )}
             </div>
 
-              <div className="relative">
-                <input type="text" placeholder="What do you want to learn?" className={`w-[400px] pl-10 pr-4 py-2 border rounded-sm transition-all duration-200 ${isSearchFocused?"border-[#0056D2] shadow-sm"
+              <div className='relative'>
+                <input type="text" placeholder="What do you want to learn?" className={`w-[400px] pl-12 pr-4 py-2 border rounded-sm transition-all duration-200 ${isSearchFocused?"border-[#0056D2] shadow-sm"
                       : "border-gray-300"}`} onFocus={() => setIsSearchFocused(true)} onBlur={() => setIsSearchFocused(false)} />
                 <Search className={`absolute left-3 top-2.5 h-5 w-5 transition-colors duration-200 ${
                     isSearchFocused? "text-[#0056D2]" : "text-gray-400"}`}/>
